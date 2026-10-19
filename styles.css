@@ -116,3 +116,12 @@ body{
   .tile{transition:none}
   .tile:hover{transform:none}
 }
+
+.developer {
+  font-size: 12px;
+  display: block;
+  color: rgba(255, 255, 255, 0.64);
+  text-align: center;
+  margin-top: 24px;
+	user-select: none;
+}
