@@ -1,0 +1,118 @@
+@font-face{
+  font-family:"Vazirmatn";
+  src:local("Vazirmatn"),url("fonts/Vazirmatn.woff2") format("woff2");
+  font-weight:400 800;
+  font-display:swap;
+}
+
+:root{
+  /* Refah palette, taken from the new logo */
+  --refah-dark:#17154a;   /* deep indigo base */
+  --refah-main:#322f81;   /* logo indigo */
+  --refah-accent:#c81c71; /* logo magenta */
+  --text:#ffffff;
+  --gap:clamp(10px,3vw,16px);
+}
+
+*{box-sizing:border-box;margin:0}
+
+html,body{height:100%}
+
+body{
+  min-height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(18px,5vw,28px);
+  padding:max(20px,env(safe-area-inset-top)) 16px max(20px,env(safe-area-inset-bottom));
+  background:
+    radial-gradient(ellipse at 15% 5%,var(--refah-main) 0,transparent 55%),
+    radial-gradient(ellipse at 90% 100%,var(--refah-accent) -40%,transparent 45%),
+    var(--refah-dark);
+  background-attachment:fixed;
+  color:var(--text);
+  font-family:"Vazirmatn",Tahoma,"Segoe UI",system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* Small logo, directly above the bank name */
+.brand{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+  text-align:center;
+}
+.logo-wrap{
+  display:grid;
+  place-items:center;
+  padding:10px 14px;
+  border-radius:18px;
+  background:#fff; /* keeps the logo readable on any background */
+  box-shadow:0 8px 20px rgba(0,0,0,.3);
+}
+.logo-wrap img{display:block;height:clamp(34px,10vw,46px);width:auto;max-width:60vw}
+.brand-name{font-weight:800;font-size:clamp(17px,5vw,22px);line-height:1.5}
+
+.grid{
+  width:min(100%,420px);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:var(--gap);
+  list-style:none;
+  padding:0;
+}
+
+.tile{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(10px,3vw,8px);
+  aspect-ratio:1/1;
+  border-radius:26px;
+  color:#fff;
+  text-decoration:none;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 10px 24px rgba(0,0,0,.35);
+  transition:transform .18s ease;
+  -webkit-tap-highlight-color:transparent;
+  width: 130px;
+}
+
+.tile::after{ /* soft highlight, static and cheap */
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  background:linear-gradient(160deg,rgba(255,255,255,.22),transparent 45%);
+  pointer-events:none;
+}
+
+.tile:hover{transform:translateY(-4px)}
+.tile:active{transform:scale(.97)}
+.tile:focus-visible{outline:3px solid #fff;outline-offset:3px}
+
+.icon{
+  width:clamp(40px,13vw,54px);
+  height:clamp(40px,13vw,54px);
+  fill:currentColor;
+  filter:drop-shadow(0 2px 4px rgba(0,0,0,.25));
+}
+
+.name{
+  font-size:clamp(15px,4.4vw,19px);
+  font-weight:700;
+  line-height:1.4;
+}
+
+.telegram {background:linear-gradient(135deg,#37aee2,#1e6fb5)}
+.instagram{background:linear-gradient(45deg,#f9a03f 0%,#e1306c 50%,#6a3fd1 100%)}
+.rubika   {background:linear-gradient(135deg,#a855f7,#6d28d9)}
+.bale     {background:linear-gradient(135deg,#2dd4a7,#0f8f6e)}
+
+@media (prefers-reduced-motion:reduce){
+  .tile{transition:none}
+  .tile:hover{transform:none}
+}
